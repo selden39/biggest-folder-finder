@@ -4,7 +4,9 @@ import java.util.concurrent.ForkJoinPool;
 public class Main {
     public static void main(String[] args) {
 
-        String folderPath = "D:\\Temp\\stations-data\\";
+        //String folderPath = "D:\\Temp\\stations-data\\";
+        String folderPath = "D:\\Temp\\old\\";
+        long sizeLimit = 40 * 1024;
         File file = new File(folderPath);
         Node root = new Node(file);
 
@@ -20,13 +22,13 @@ public class Main {
         FolderSizeCalculator calculator = new FolderSizeCalculator(root);
         ForkJoinPool pool = new ForkJoinPool();
         pool.invoke(calculator);
-        System.out.println(root);
+        System.out.println(root.toStringWithFilter(sizeLimit));
 
         long duration = (System.currentTimeMillis() - start);
         System.out.println(duration + "ms");
 
     }
 
-    //TODO 2:54:01
+    //TODO 3:11:20
 
 }

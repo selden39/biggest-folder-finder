@@ -37,7 +37,7 @@ public class Node {
         this.size = size;
     }
 
-    public String toString(){
+    public String toStringWithFilter(long sizeLimit){
         String size = SizeCalculator.getHumanReadableSize(getSize());
         StringBuilder builder = new StringBuilder();
         builder.append(folder.getName() + " - " + size + "\n");
@@ -46,7 +46,9 @@ public class Node {
             for (int i = 0; i < level; i++) { indent += "  "; }
             builder.append(indent + child.toString());*/
             // заменяем на repeat
-            builder.append("  ".repeat(level + 1) + child.toString());
+            if (child.size >= sizeLimit) {
+                builder.append("  ".repeat(level + 1) + child.toStringWithFilter(sizeLimit));
+            }
         }
         return builder.toString();
     }
