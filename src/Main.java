@@ -4,9 +4,14 @@ import java.util.concurrent.ForkJoinPool;
 public class Main {
     public static void main(String[] args) {
 
-        //String folderPath = "D:\\Temp\\stations-data\\";
-        String folderPath = "D:\\Temp\\old\\";
-        long sizeLimit = 40 * 1024;
+        // example to call program in cmd
+        // java -jar BiggestFolderFinder.jar -d C:\SkillBox_GitHub\BiggestFolderFinder\ -l 1B
+
+        ParametersBag bag = new ParametersBag(args);
+
+        String folderPath = bag.getPath();
+        long sizeLimit = bag.getLimit();
+
         File file = new File(folderPath);
         Node root = new Node(file);
 
@@ -28,7 +33,4 @@ public class Main {
         System.out.println(duration + "ms");
 
     }
-
-    //TODO 3:11:20
-
 }

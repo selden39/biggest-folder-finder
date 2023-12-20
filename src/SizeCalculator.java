@@ -15,6 +15,9 @@ public class SizeCalculator {
         return sum;
     }
 
+    /*TODO методы getHumanReadableSize и getSizeFromHumanReadable работают. но реализованы не самым лучшим образом
+    т.к. при старте реализации не было четкого понимания кк они будут использоваться*/
+
     public static String getHumanReadableSize(long size){
         double currentSize = size;
         int siPrefixDigits;
